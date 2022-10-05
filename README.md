@@ -61,13 +61,13 @@ class Model():
     self.n     = n
 ```
 
-When we then create a model `mod` as in
+Given the above definition of the `Model` class, the name of the class `Model` can be "called" as though it were a function as in `Model(State.Ready, Image.empty(10, 10, Color.white), 4)`. Behind the scenes, the class `__init__` function is called on our behalf in order to create and initialize a class value. If we capture the model in a variable, say, `mod` as in
 
 ```python
 mod = Model(State.Ready, Image.empty(10, 10, Color.white), 4)
 ```
 
-We can then refer to the parts using the chosen symbolic names together with the dot notation.
+We can then refer to the 3 parts of the model using the chosen symbolic names together with the dot notation.
 
 ````python
 ... mod.state ... mod.image ... mod.n ...
