@@ -49,9 +49,9 @@ Then we can refer to the state with meaningful symbolic names `State.Ready` and 
 
 What is changing during the course of running our app? In the touchSquares example, the *state* changes from `State.Ready` to `State.Running` when the user clicks, the *image* changes as the user adds colored squares and the size of the grid `n` is required in order to create a colored square of the right size. So the overall state of our application has 3 parts: `state`, `image` and `n`. In the model-view-update system that we're using, these 3 parts must be bundled up into a single value, called a *model*.
 
-It's natural to think of using a simple 3-tuple `(state, image, n)` as a representation of the model. This can be made to work but it doesn't provide the reader of the code much support in remember what's what. It would be better to have meaningful symbolic names, so that if `mod` was a model, then `mod.state` would refer to the `state` portion of the model, `mod.image` would refer to the `image` portion and `mod.n` would refer to the grid size.
+It's natural to think of using a simple 3-tuple `(state, image, n)` as a representation of the model. This can be made to work but it doesn't provide the reader of the code much support in remembering what's what. It would be better to have meaningful symbolic names, so that if `mod` was a model, then `mod.state` would refer to the `state` portion of the model, `mod.image` would refer to the `image` portion and `mod.n` would refer to the grid size.
 
-The `bestTouch.py` code also illustrates a good way to represent the multi-part overall state of our application using a Python class.
+The `bestTouch.py` code illustrates a good way to represent the multi-part model using a Python class. The class form is often used for other purposes but it can be put to use just to support the use of symbolic names described above.
 
 ```python
 class Model():
@@ -61,7 +61,7 @@ class Model():
     self.n     = n
 ```
 
-Given the above definition of the `Model` class, the name of the class `Model` can be "called" as though it were a function as in `Model(State.Ready, Image.empty(10, 10, Color.white), 4)`. Behind the scenes, the class `__init__` function is called on our behalf in order to create and initialize a class value. If we capture the model in a variable, say, `mod` as in
+Given the above definition of the `Model` class, the name of the class `Model` can be "called" as though it were a function as in `Model(State.Ready, Image.empty(10, 10, Color.white), 4)`. (Behind the scenes, the class `__init__` function is called on our behalf in order to create and initialize a class value.) If we capture the created model in a variable, say, `mod` as in
 
 ```python
 mod = Model(State.Ready, Image.empty(10, 10, Color.white), 4)
